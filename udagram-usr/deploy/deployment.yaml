@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: udagramusr 
+  name: udagramusr 
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: udagramusr
+  template:
+    metadata:
+      labels:
+        app: udagramusr
+        service: udagramusr
+    spec:
+      containers:
+      - image: hello198/udagram-usr
+        name: udagramusr
+        imagePullPolicy: Always          
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"       
+        ports:
+        - containerPort: 8082
+      restartPolicy: Always
+
+

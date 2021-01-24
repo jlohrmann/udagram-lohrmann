@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: udagramfeed 
+  name: udagramfeed 
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: udagramfeed
+  template:
+    metadata:
+      labels:
+        app: udagramfeed 
+        service: udagramfeed
+    spec:
+      containers:
+      - image: hello198/udagram-feed
+        name: udagram-feed
+        imagePullPolicy: Always          
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"       
+        ports:
+        - containerPort: 8080
+      restartPolicy: Always
+
+
