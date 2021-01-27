@@ -18,17 +18,17 @@ script:
   - docker build -t reverse-proxy -f ./reverse-proxy/Dockerfile .
   - docker tag reverse-proxy hello198/reverse-proxy:latest
   - docker build -t udagram-frontend -f ./udagram-frontend/Dockerfile .
-  - docker tag simple-node hello198/udagram-frontend:latest 
+  - docker tag udagram-frontend hello198/udagram-frontend:latest 
   - docker build -t udagram-feed -f ./udagram-feed/Dockerfile . 
   - docker tag udagram-feed hello198/udagram-feed:latest
   - docker build -t udagram-usr -f ./udagram-usr/Dockerfile . 
-  - docker tag reverse-proxy hello198/udagram-usr:latest
+  - docker tag udagram-usr hello198/udagram-usr:latest
 
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push hello198/reverse-proxy
-  - docker push hello198/udagram-frontend
-  - docker push hello198/udagram-feed
-  - docker push hello198/udagram-usr
+  - docker push hello198/reverse-proxy:latest
+  - docker push hello198/udagram-frontend:latest
+  - docker push hello198/udagram-feed:latest
+  - docker push hello198/udagram-usr:latest
 
