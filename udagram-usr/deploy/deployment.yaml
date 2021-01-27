@@ -2,22 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    service: udagramusr 
-  name: udagramusr 
+    service: udagram-usr 
+  name: udagram-usr 
 spec:
   replicas: 1
   selector: 
     matchLabels:
-      app: udagramusr
+      app: udagram-usr
   template:
     metadata:
       labels:
-        app: udagramusr
-        service: udagramusr
+        app: udagram-usr
+        service: udagram-usr
     spec:
       containers:
       - image: hello198/udagram-usr
-        name: udagramusr
+        name: udagram-usr
         imagePullPolicy: Always          
         resources:
           requests:
@@ -27,7 +27,7 @@ spec:
             memory: "1024Mi"
             cpu: "500m"       
         ports:
-        - containerPort: 8082
+        - containerPort: 8080
       restartPolicy: Always
 
 

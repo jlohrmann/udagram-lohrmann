@@ -6,8 +6,8 @@ metadata:
   name: udagram-usr-svc
 spec:
   ports:
-  - name: "8082"
-    port: 8082
-    targetPort: 8082
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
   selector:
     service: udagram-usr 
