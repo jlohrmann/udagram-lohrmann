@@ -6,7 +6,7 @@ WORKDIR /usr/src/app
 
 # Install app dependencies by copying
 # package.json and package-lock.json
-COPY package*.json ./reverse-proxy
+COPY package*.json ./reverse-proxy/
 
 # Install dependencies
 RUN npm install
