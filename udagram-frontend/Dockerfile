@@ -14,10 +14,6 @@ RUN npm install
 # Copy app source
 COPY . .
 
-RUN  ionic init "udagram frontend" --type "custom" --force
-
-RUN ionic build
-
 ## Run
 FROM nginx:alpine
 
