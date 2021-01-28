@@ -16,13 +16,13 @@ before_script:
 script:
   - docker --version # print the version for logging
   - docker build -t  reverse-proxy -f ./reverse-proxy/Dockerfile ./reverse-proxy
-  - docker tag hello198/reverse-proxy reverse-proxy:latest 
+  - docker tag reverse-proxy reverse-proxy:latest 
   - docker build -t  udagram-frontend -f ./udagram-frontend/Dockerfile ./udagram-frontend
-  - docker tag hello198/udagram-frontend udagram-frontend:latest 
+  - docker tag udagram-frontend udagram-frontend:latest 
   - docker build -t  udagram-feed -f ./udagram-feed/Dockerfile ./udagram-feed
-  - docker tag hello198/udagram-feed udagram-feed:latest  
+  - docker tag udagram-feed udagram-feed:latest  
   - docker build -t  udagram-usr -f ./udagram-usr/Dockerfile ./udagram-usr
-  - docker tag hello198/udagram-usr udagram-usr:latest 
+  - docker tag udagram-usr udagram-usr:latest 
 
 
 after_success:
