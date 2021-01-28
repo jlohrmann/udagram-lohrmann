@@ -9,7 +9,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./reverse-proxy
 
 # Install dependencies
-RUN npm ci
+RUN npm install
 
 FROM nginx:alpine 
 
