@@ -6,10 +6,10 @@ WORKDIR /usr/src/app
 
 # Install app dependencies by copying
 # package.json and package-lock.json
-COPY package*.json ./
+COPY package*.json ./udagram-usr
 
 # Install dependencies
-RUN npm ci 
+RUN npm install
 
 # Copy app source
 COPY . .
