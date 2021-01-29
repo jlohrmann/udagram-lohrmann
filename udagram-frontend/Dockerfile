@@ -6,13 +6,15 @@ WORKDIR /usr/src/app
 
 # Install app dependencies by copying
 # package.json and package-lock.json
-COPY package*.json ./udagram-frontend/
+COPY package*.json ./usr/src/app
 
 # Install dependencies
 RUN npm install 
 
 # Copy app source
 COPY . .
+
+RUN ionic build
 
 ## Run
 FROM nginx:alpine
