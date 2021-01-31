@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
     service: udagram-feed 
-  name: udagram-feed-svc
+  name: udagram-feed
 spec:
   ports:
   - name: "8080"

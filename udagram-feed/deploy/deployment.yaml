@@ -2,20 +2,19 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    service: udagram-feed 
-  name: udagram-feed 
+    service: udagram-feed
+  name: udagram-feed
 spec:
   replicas: 1
   selector: 
     matchLabels:
-      app: udagram-feed
+      service: udagram-feed
   template:
     metadata:
       labels:
-        app: udagram-feed 
         service: udagram-feed
     spec:
-      containers:
+     containers:
       - image: hello198/udagram-feed
         name: udagram-feed
         imagePullPolicy: Always          
@@ -26,8 +25,60 @@ spec:
           limits:
             memory: "1024Mi"
             cpu: "500m"       
-        ports:
-        - containerPort: 8080
-      restartPolicy: Always
+        env:
+         - name: URL
+           valueFrom:
+             configMapKeyRef:
+              name: env-config
+              key: URL
+         - name: AWS_BUCKET
+           valueFrom:
+            configMapKeyRef:
+             name: env-config
+             key: AWS_BUCKET
+         - name: AWS_PROFILE
+           valueFrom:
+            configMapKeyRef:
+              name: env-config
+              key: AWS_PROFILE
+         - name: AWS_REGION
+           valueFrom:
+            configMapKeyRef:
+              name: env-config
+              key: AWS_REGION
+         - name: JWT_SECRET
+           valueFrom:
+            configMapKeyRef:
+              name: env-config
+              key: JWT_SECRET
+         - name: POSTGRES_DB
+           valueFrom:
+            configMapKeyRef:
+              name: env-config
+              key: POSTGRES_DB
+         - name: POSTGRES_HOST
+           valueFrom:
+            configMapKeyRef:
+              name: env-config
+              key: POSTGRES_HOST
+         - name: POSTGRES_PASSWORD
+           valueFrom:
+            secretKeyRef:
+              name: env-secret
+              key: POSTGRES_PASSWORD
+         - name: POSTGRES_USERNAME
+           valueFrom:
+            secretKeyRef:
+              name: env-secret
+              key: POSTGRES_USERNAME      
+        volumeMounts:
+         - name: aws-secret
+           mountPath: "/root/.aws/"
+           readOnly: true
+     restartPolicy: Always
+     volumes:
+      - name: aws-secret
+        secret:
+            secretName: aws-secret
 
 
