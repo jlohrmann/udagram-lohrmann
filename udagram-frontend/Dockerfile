@@ -10,7 +10,10 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm ci
+RUN npm install -g cordova ionic
+
+RUN npm ci 
+
 
 # Bundle app source
 COPY . .
@@ -22,6 +25,3 @@ FROM nginx:alpine
 
 #COPY www /usr/share/nginx/html
 COPY --from=ionic /usr/src/app/www /usr/share/nginx/html
-
-ENTRYPOINT [“ionic”]
-CMD [“serve”, “8100”]

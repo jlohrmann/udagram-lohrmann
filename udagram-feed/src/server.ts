@@ -14,7 +14,7 @@ import {V0_FEED_MODELS} from './controllers/v0/model.index';
   await sequelize.sync();
 
   const app = express();
-  const port = process.env.PORT || 8081;
+  const port = process.env.PORT || 8080;
 
   app.use(bodyParser.json());
 
@@ -28,11 +28,11 @@ import {V0_FEED_MODELS} from './controllers/v0/model.index';
     origin: config.url,
   }));
 
-  app.use('/api/v0/', IndexRouter);
+  app.use('/feed', IndexRouter);
 
   // Root URI call
   app.get( '/', async ( req, res ) => {
-    res.send( '/api/v0/' );
+    res.send( '/feed' );
   } );
 
 
