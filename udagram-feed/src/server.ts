@@ -28,11 +28,11 @@ import {V0_FEED_MODELS} from './controllers/v0/model.index';
     origin: '*' 
   }));
 
-  app.use('/feed', IndexRouter);
+  app.use('/api/v0/, IndexRouter);
 
   // Root URI call
   app.get( '/', async ( req, res ) => {
-    res.send( '/feed' );
+    res.send( '/api/v0/' );
   } );
 
 
