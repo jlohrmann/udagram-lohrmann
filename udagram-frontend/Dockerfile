@@ -22,3 +22,6 @@ FROM nginx:alpine
 
 #COPY www /usr/share/nginx/html
 COPY --from=ionic /usr/src/app/www /usr/share/nginx/html
+
+ENTRYPOINT [“ionic”]
+CMD [“serve”, “8100”]
