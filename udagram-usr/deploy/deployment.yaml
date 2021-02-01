@@ -17,7 +17,7 @@ spec:
      containers:
       - image: hello198/udagram-usr
         name: udagram-usr
-        imagePullPolicy: Always          
+        imagePullPolicy: Always
         resources:
           requests:
             memory: "64Mi"
@@ -80,5 +80,3 @@ spec:
       - name: aws-secret
         secret:
             secretName: aws-secret
-
-
